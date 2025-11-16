@@ -82,8 +82,9 @@ class Effect {
     /**
      * Set the effects value.
      * @param {number} value - new value to set effect to
+     * @param {...*} args Any other arguments that the effect may need
      */
-    set (value) {
+    set (value, ...args) {
         // Initialize the node on first set.
         if (!this.initialized) {
             this.initialize();
@@ -97,7 +98,7 @@ class Effect {
 
         // Call the internal implementation per this Effect.
         if (value !== this.value) {
-            this._set(value);
+            this._set(value, ...args);
         }
 
         // Connect or disconnect from the graph if this now applies or no longer

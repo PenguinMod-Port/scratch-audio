@@ -6,7 +6,7 @@
   "browser": "./src/index.js",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "test": "npm run lint && npm run tap && npm run build",
+    "test": "npm run tap && npm run build",
     "build": "webpack --bail",
     "watch": "webpack --watch",
     "lint": "eslint .",

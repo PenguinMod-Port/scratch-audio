@@ -37,13 +37,14 @@ class VolumeEffect extends Effect {
      * Set the effects value.
      * @private
      * @param {number} value - new value to set effect to
+     * @param {number?} decay - Extra decay to add onto the built-in decay.
      */
-    _set (value) {
+    _set (value, decay) {
         this.value = value;
 
         const {gain} = this.outputNode;
         const {currentTime, DECAY_DURATION} = this.audioEngine;
-        gain.linearRampToValueAtTime(value / 100, currentTime + DECAY_DURATION);
+        gain.linearRampToValueAtTime(value / 100, currentTime + DECAY_DURATION + (decay ?? 0));
     }
 
     /**
